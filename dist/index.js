@@ -28872,8 +28872,7 @@ class CommandLineMaker
 
   workingDirectory()
   {
-    if(this.old_style==true) return this.binary_dir
-    else return this.actual_path
+    return this.binary_dir
   }
 
   #binary_dir()
