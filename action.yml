@@ -11,7 +11,7 @@ inputs:
     description: 'Path to directory which CMake will use as the root of build directory.'
     required: false
     default: '../build'
-  generator:
+  generators:
     description: 'List of generator names'
     required: true
     default: 'NSIS64'
