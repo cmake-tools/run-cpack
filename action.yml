@@ -1,0 +1,11 @@
+name: run-cpack
+description: 'GitHub action to run CPack'
+author: flagarde
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+
+branding:
+  icon: 'settings'
+  color: 'green'
