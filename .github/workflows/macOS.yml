@@ -54,4 +54,5 @@ jobs:
         id: test
         with:
           generators: 'STGZ;TBZ2'
+          packages_directory: '../packages'
         

@@ -28905,16 +28905,32 @@ class CommandLineMaker
     }
   }
 
-  #generator()
+  #generators()
   {
     const generators = parser.getInput('generators', {type: 'string'})
     return ['-G',generators]
   }
 
+  #configurations()
+  {
+    const configurations = parser.getInput('configurations', {type: 'string'})
+    if(configurations=='') return []
+    else return ['-C',configurations]
+  }
+
+  #packages_directory()
+  {
+    const packages_directory = parser.getInput('packages_directory', {type: 'string'})
+    if(packages_directory=='') return []
+    else return ['-B',path.posix.resolve(packages_directory)]
+  }
+
   packCommandParameters()
   {
     let parameters=[]
-    parameters=parameters.concat(this.#generator())
+    parameters=parameters.concat(this.#generators())
+    parameters=parameters.concat(this.#configurations)
+    parameters=parameters.concat(this.#packages_directory())
     return parameters;
   }
 }

@@ -15,6 +15,14 @@ inputs:
     description: 'List of generator names'
     required: true
     default: 'NSIS64'
+  configurations:
+    description: 'Specify the project configuration(s) to be packaged (e.g. Debug, Release, etc.)'
+    required: false
+    default: ''
+  packages_directory:
+    description: 'Override/define CPACK_PACKAGE_DIRECTORY, which controls the directory where CPack will perform its packaging work.'
+    required: false
+    default: ''
 
 branding:
   icon: 'settings'
