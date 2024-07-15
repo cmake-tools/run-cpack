@@ -55,7 +55,7 @@ jobs:
         uses: ./
         id: test
         with:
-          generators: 'STGZ;TBZ2;NSIS64'
+          generators: 'STGZ;TBZ2;NSIS'
           packages_directory: '../packages'
           verbose: false
           trace: false
