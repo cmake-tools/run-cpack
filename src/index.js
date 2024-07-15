@@ -97,7 +97,7 @@ class CommandLineMaker
   {
     let parameters=[]
     parameters=parameters.concat(this.#generators())
-    parameters=parameters.concat(this.#configurations)
+    parameters=parameters.concat(this.#configurations())
     parameters=parameters.concat(this.#packages_directory())
     return parameters;
   }
