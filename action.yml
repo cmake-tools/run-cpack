@@ -6,6 +6,12 @@ runs:
   using: 'node20'
   main: 'dist/index.js'
 
+inputs:
+  generator:
+    description: 'List of generator names'
+    required: true
+    default: 'NSIS64'
+
 branding:
   icon: 'settings'
   color: 'green'

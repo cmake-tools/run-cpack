@@ -36,9 +36,17 @@ class CommandLineMaker
   {
     this.actual_path=path.resolve('./')
   }
+  #generator()
+  {
+    const generators = parser.getInput('generators', {type: 'string'})
+    return ['-G',generators]
+  }
+
   packCommandParameters()
   {
-    return ['--help']
+    let parameters=[]
+    parameters=parameters.concat(this.#generator())
+    return parameters;
   }
 }
 

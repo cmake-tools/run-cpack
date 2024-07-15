@@ -51,6 +51,8 @@ jobs:
           clean_first: true
           build_verbose: true
 
-      - name: 🧪 run-cpack
+      - name: 📦 run-cpack
         uses: ./
         id: test
+        with:
+          generators: 'NSIS64;STGZ'
