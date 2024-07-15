@@ -28857,6 +28857,25 @@ async function getCPackVersion()
   else return version_number[0]
 }
 
+async function installGenerators()
+{
+  let found_NSIS = false
+  if(process.platform === "win32")
+  {
+    found_NSIS = which.sync('makensis.exe', { nothrow: true })
+  }
+  else
+  {
+    found_NSIS = which.sync('dot', { nothrow: true })
+  }
+  if(!found_NSIS)
+  {
+    if(process.platform === "win32") await exec.exec('choco',['install', 'nsis'])
+    else if(process.platform === "linux") await exec.exec('sudo apt-get',['install', 'nsis'])
+    else await exec.exec('brew', ['install', 'makensis'])
+  }
+}
+
 function CPackVersionGreaterEqual(version)
 {
   return compare_version.compare(global.cpack_version, version, '>=')
@@ -28924,6 +28943,7 @@ async function main()
   {
     let found = which.sync('cpack', { nothrow: true })
     if(!found) throw String('not found: CPack')
+    await installGenerators()
     global.cpack_version= await getCPackVersion()
     const command_line_maker = new CommandLineMaker()
     pack(command_line_maker)
