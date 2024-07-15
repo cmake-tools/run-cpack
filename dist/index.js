@@ -28929,13 +28929,6 @@ class CommandLineMaker
     return ret;
   }
 
-  #packages_directory()
-  {
-    const packages_directory = parser.getInput('packages_directory', {type: 'string'})
-    if(packages_directory=='') return []
-    else return ['-B',path.posix.resolve(packages_directory)]
-  }
-
   #config_file()
   {
     const config_file = parser.getInput('config_file', {type: 'string', default: ''})
@@ -28966,17 +28959,48 @@ class CommandLineMaker
     else return []
   }
 
+  #package_name()
+  {
+    const package_name = parser.getInput('package_name', {type: 'string', default: ''})
+    if(package_name=='') return []
+    else return ['-P',package_name]
+  }
+
+  #package_version()
+  {
+    const package_version = parser.getInput('package_version', {type: 'string', default: ''})
+    if(package_version=='') return []
+    else return ['-R',package_version]
+  }
+
+  #packages_directory()
+  {
+    const packages_directory = parser.getInput('packages_directory', {type: 'string'})
+    if(packages_directory=='') return []
+    else return ['-B',path.posix.resolve(packages_directory)]
+  }
+
+  #vendor_name()
+  {
+    const vendor_name = parser.getInput('vendor_name', {type: 'string', default: ''})
+    if(vendor_name=='') return []
+    else return ['--vendor',vendor_name]
+  }
+
   packCommandParameters()
   {
     let parameters=[]
     parameters=parameters.concat(this.#generators())
     parameters=parameters.concat(this.#configurations())
-    parameters=parameters.concat(this.#packages_directory())
     parameters=parameters.concat(this.#variables())
     parameters=parameters.concat(this.#config_file())
     parameters=parameters.concat(this.#verbose())
     parameters=parameters.concat(this.#trace())
     parameters=parameters.concat(this.#trace_expand())
+    parameters=parameters.concat(this.#package_name())
+    parameters=parameters.concat(this.#package_version())
+    parameters=parameters.concat(this.#packages_directory())
+    parameters=parameters.concat(this.#vendor_name())
     return parameters;
   }
 }
