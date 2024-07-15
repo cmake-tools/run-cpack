@@ -53,5 +53,5 @@ jobs:
         uses: ./
         id: test
         with:
-          generators: 'STGZ'
+          generators: 'STGZ;TBZ2'
         
