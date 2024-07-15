@@ -60,7 +60,8 @@ jobs:
         uses: ./
         id: test
         with:
-          generators: 'STGZ;TBZ2'
+          generators: 'STGZ;TBZ2;NSIS64'
           packages_directory: '../packages'
-          trace: true
-          trace_expand: true
+          verbose: false
+          trace: false
+          trace_expand: false
