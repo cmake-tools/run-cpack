@@ -20,7 +20,19 @@ inputs:
     required: false
     default: ''
   packages_directory:
-    description: 'Override/define CPACK_PACKAGE_DIRECTORY, which controls the directory where CPack will perform its packaging work.'
+    description: 'Override/define CPACK_PACKAGE_DIRECTORY, which controls the directory where CPack will perform its packaging work'
+    required: false
+    default: ''
+  verbose:
+    description: 'Run cpack with verbose output'
+    required: false
+    default: ''
+  trace:
+    description: 'Put the underlying cmake scripts in trace mode.'
+    required: false
+    default: ''
+  trace_expand:
+    description: 'Put the underlying cmake scripts in expanded trace mode'
     required: false
     default: ''
 

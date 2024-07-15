@@ -28918,11 +28918,52 @@ class CommandLineMaker
     else return ['-C',configurations]
   }
 
+  #variables()
+  {
+    const value = parser.getInput('variables', {type: 'array',default:[]})
+    let ret=[]
+    for(const i in value)
+    {
+      ret=ret.concat('-D',value[i])
+    }
+    return ret;
+  }
+
   #packages_directory()
   {
     const packages_directory = parser.getInput('packages_directory', {type: 'string'})
     if(packages_directory=='') return []
     else return ['-B',path.posix.resolve(packages_directory)]
+  }
+
+  #config_file()
+  {
+    const config_file = parser.getInput('config_file', {type: 'string', default: ''})
+    if(config_file=='') return []
+    else return ['--config',path.posix.resolve(config_file)]
+  }
+
+  #verbose()
+  {
+    const verbose = parser.getInput('verbose', {type: 'boolean', default: 'false'})
+    if(verbose=='') return []
+    else return ['--verbose']
+  }
+
+  #trace()
+  {
+    const trace = parser.getInput('trace', {type: 'boolean', default: 'false'})
+    if(trace=='') return []
+    else if (CPackVersionGreaterEqual('3.11')) return ['--trace']
+    else return []
+  }
+
+  #trace_expand()
+  {
+    const trace_expand = parser.getInput('trace_expand', {type: 'boolean', default: 'false'})
+    if(trace_expand=='') return []
+    else if (CPackVersionGreaterEqual('3.11')) return ['--trace-expand']
+    else return []
   }
 
   packCommandParameters()
@@ -28931,6 +28972,11 @@ class CommandLineMaker
     parameters=parameters.concat(this.#generators())
     parameters=parameters.concat(this.#configurations())
     parameters=parameters.concat(this.#packages_directory())
+    parameters=parameters.concat(this.#variables())
+    parameters=parameters.concat(this.#config_file())
+    parameters=parameters.concat(this.#verbose())
+    parameters=parameters.concat(this.#trace())
+    parameters=parameters.concat(this.#trace_expand())
     return parameters;
   }
 }

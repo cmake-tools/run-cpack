@@ -55,4 +55,6 @@ jobs:
         with:
           generators: 'STGZ;TBZ2'
           packages_directory: '../packages'
+          trace: true
+          trace_expand: true
         
