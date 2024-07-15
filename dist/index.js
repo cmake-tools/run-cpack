@@ -28871,7 +28871,7 @@ async function installGenerators()
   if(!found_NSIS)
   {
     if(process.platform === "win32") await exec.exec('choco',['install', 'nsis'])
-    else if(process.platform === "linux") await exec.exec('sudo apt-get',['install', 'nsis', 'wine'])
+    else if(process.platform === "linux") await exec.exec('sudo apt-get',['install', 'nsis', 'wine', 'mingw-w64'])
     else await exec.exec('brew', ['install', 'makensis'])
   }
 }
