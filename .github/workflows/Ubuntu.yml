@@ -60,3 +60,6 @@ jobs:
           verbose: false
           trace: false
           trace_expand: false
+      
+      - name: ee
+        run: echo "$(</home/runner/work/run-cpack/packages/_CPack_Packages/Linux/NSIS/NSISOutput.log )"
