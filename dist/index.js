@@ -28907,13 +28907,13 @@ class CommandLineMaker
 
   #generators()
   {
-    const generators = parser.getInput('generators', {type: 'string'})
+    const generators = parser.getInput('generators', {type: 'string', default : ''})
     return ['-G',generators]
   }
 
   #configurations()
   {
-    const configurations = parser.getInput('configurations', {type: 'string'})
+    const configurations = parser.getInput('configurations', {type: 'string', default:''})
     if(configurations=='') return []
     else return ['-C',configurations]
   }
