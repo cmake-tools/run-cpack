@@ -7,6 +7,10 @@ runs:
   main: 'dist/index.js'
 
 inputs:
+  binary_dir:
+    description: 'Path to directory which CMake will use as the root of build directory.'
+    required: false
+    default: '../build'
   generator:
     description: 'List of generator names'
     required: true

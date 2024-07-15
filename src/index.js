@@ -35,7 +35,26 @@ class CommandLineMaker
   constructor()
   {
     this.actual_path=path.resolve('./')
+    this.#binary_dir()
   }
+
+  workingDirectory()
+  {
+    if(this.old_style==true) return this.binary_dir
+    else return this.actual_path
+  }
+
+  #binary_dir()
+  {
+    this.binary_dir = ''
+    if(process.env.binary_dir) this.binary_dir = process.env.binary_dir
+    else this.binary_dir = core.getInput('binary_dir', { required: false, default: '' })
+    if(this.binary_dir!='')
+    {
+      this.binary_dir=path.posix.resolve(this.binary_dir)
+    }
+  }
+
   #generator()
   {
     const generators = parser.getInput('generators', {type: 'string'})
@@ -64,6 +83,7 @@ function pack(command_line_maker)
     } 
   }
   options.silent = false
+  options.cwd = command_line_maker.workingDirectory()
   exec.exec('cpack',command_line_maker.packCommandParameters(), options)
 }
 
