@@ -60,4 +60,4 @@ jobs:
         uses: ./
         id: test
         with:
-          generators: 'NSIS64;STGZ'
+          generators: 'STGZ'
