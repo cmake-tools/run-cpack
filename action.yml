@@ -13,8 +13,8 @@ inputs:
     default: '../build'
   generators:
     description: 'List of generator names'
-    required: true
-    default: 'NSIS64'
+    required: false
+    default: 'TBZ2'
   configurations:
     description: 'Specify the project configuration(s) to be packaged (e.g. Debug, Release, etc.)'
     required: false

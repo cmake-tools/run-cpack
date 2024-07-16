@@ -28907,7 +28907,7 @@ class CommandLineMaker
 
   #generators()
   {
-    const generators = parser.getInput('generators', {type: 'string', default : ''})
+    const generators = parser.getInput('generators', {type: 'string', default : 'TBZ2'})
     return ['-G',generators]
   }
 
@@ -28975,7 +28975,7 @@ class CommandLineMaker
 
   #packages_directory()
   {
-    const packages_directory = parser.getInput('packages_directory', {type: 'string'})
+    const packages_directory = parser.getInput('packages_directory', {type: 'string', default:''})
     if(packages_directory=='') return []
     else return ['-B',path.posix.resolve(packages_directory)]
   }
